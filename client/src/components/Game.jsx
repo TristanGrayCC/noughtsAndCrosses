@@ -15,9 +15,10 @@ class Game extends React.Component {
   }
 
   render(){
-    if (this.state.whoWon === null){
+    let className = (this.state.whoWon === null) ? "game" : "game-over"
+    let result = (this.state.whoWon === null) ? null : <Result value={this.state.whoWon}/>
       return(
-        <div className = "game">
+        <div className = {className}>
           <div className = "row">
             <Square index = "0" value = {this.state.game[0]} onChangeTurn = {this.takeTurn}/>
             <Square index = "1" value = {this.state.game[1]} onChangeTurn = {this.takeTurn}/>
@@ -33,29 +34,9 @@ class Game extends React.Component {
             <Square index = "7" value = {this.state.game[7]} onChangeTurn = {this.takeTurn}/>
             <Square index = "8" value = {this.state.game[8]} onChangeTurn = {this.takeTurn}/>
           </div>
+          {result}
         </div>
         )
-      }
-    else return (
-      <div className = "game-over">
-        <div className = "row">
-          <Square index = "0" value = {this.state.game[0]} onChangeTurn = {this.takeTurn}/>
-          <Square index = "1" value = {this.state.game[1]} onChangeTurn = {this.takeTurn}/>
-          <Square index = "2" value = {this.state.game[2]} onChangeTurn = {this.takeTurn}/>
-        </div>
-        <div className = "row">
-          <Square index = "3" value = {this.state.game[3]} onChangeTurn = {this.takeTurn}/>
-          <Square index = "4" value = {this.state.game[4]} onChangeTurn = {this.takeTurn}/>
-          <Square index = "5" value = {this.state.game[5]} onChangeTurn = {this.takeTurn}/>
-        </div>
-        <div className = "row">
-          <Square index = "6" value = {this.state.game[6]} onChangeTurn = {this.takeTurn}/>
-          <Square index = "7" value = {this.state.game[7]} onChangeTurn = {this.takeTurn}/>
-          <Square index = "8" value = {this.state.game[8]} onChangeTurn = {this.takeTurn}/>
-        </div>
-        <Result value={this.state.whoWon}/>
-      </div>
-    )
   }
 
   takeTurn(index){
@@ -110,23 +91,6 @@ class Game extends React.Component {
      if (!game.includes(null)) whoWon = "No One";
 
     this.setState({game: array, turn: turn, whoWon: whoWon});
-  }
-
-  componentDidUpdate(){
-    // const game = this.state.game;
-    // let player = "";
-    // if (this.state.turn === "X") player = "O";
-    // if (this.state.turn === "O") player = "X";
-    // console.log(player);
-    // if (game[0] === game[1] && game[0] === game[2] && game[0] !== null) this.setState({whoWon: player});
-    // if (game[3] === game[4] && game[3] === game[5] && game[3] !== null) this.setState({whoWon: player});
-    // if (game[6] === game[7] && game[6] === game[8] && game[6] !== null) this.setState({whoWon: player});
-    // if (game[0] === game[3] && game[0] === game[6] && game[0] !== null) this.setState({whoWon: player});
-    // if (game[1] === game[4] && game[1] === game[7] && game[1] !== null) this.setState({whoWon: player});
-    // if (game[2] === game[5] && game[2] === game[8] && game[2] !== null) this.setState({whoWon: player});
-    // if (game[0] === game[4] && game[0] === game[8] && game[0] !== null) this.setState({whoWon: player});
-    // if (game[2] === game[4] && game[2] === game[6] && game[2] !== null) this.setState({whoWon: player});
-    // if (!game.includes(null)) this.setState({whoWon: "Draw"});
   }
 }
 
