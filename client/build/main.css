@@ -1,0 +1,30 @@
+body {
+  font-family: "Trebuchet MS";
+}
+
+.square {
+  height: 150px;
+  width: 150px;
+  font-size: 5em;
+  float: left;
+  background-color: dodgerblue;
+}
+
+.row {
+  width: 450px;
+}
+
+.result {
+  clear:both;
+  width: 450px;
+  text-align: center;
+}
+
+.game-over {
+  pointer-events: none;
+  margin: 20px;
+}
+
+.game {
+  margin: 20px;
+}
